@@ -1,0 +1,35 @@
+name: Devin Dependency Bot Tests
+
+on:
+  pull_request:
+    paths:
+      - "devin-dependency-bot/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "devin-dependency-bot/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: devin-dependency-bot
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --no-cache-dir -r requirements.txt
+
+      - name: Run tests with coverage
+        run: pytest tests/ -v --cov=app --cov-report=term-missing --cov-fail-under=80
+
+      - name: Build Docker image
+        run: docker build -t devin-dependency-bot:test .
