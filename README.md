@@ -1,6 +1,6 @@
 # Devin Dependency Bot
 
-Human-in-the-loop **frontend** dependency management for **kaitogoto7/superset**.
+Human-in-the-loop **frontend** dependency management for **Apache superset**.
 
 A human triggers a scan, reviews categorized dependency issues, selects which
 to fix, and the bot posts GitHub Issues and triggers
@@ -84,8 +84,8 @@ Node.js 20 LTS is bundled in the Docker image — no host installation required.
 ### 1. Clone and enter the bot directory
 
 ```bash
-git clone https://github.com/kaitogoto7/superset.git
-cd superset/devin-dependency-bot
+git clone https://github.com/superset.git
+cd devin-dependency-bot
 ```
 
 ### 2. Configure environment
@@ -95,7 +95,7 @@ cp .env.example .env
 # Edit .env and fill in your tokens
 ```
 
-### 3. Start the service
+### 3. Cleanly start the Docker
 
 ```bash
 docker compose down
